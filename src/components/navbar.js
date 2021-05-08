@@ -5,10 +5,10 @@ const NavBar = () => {
     return (
         <nav className="navigation">
             <NavLink exact to="/">
-                <i className="fas fa-home" />
+                <i className="fas fa-home fa-2x" />
             </NavLink>
             <NavLink to="/posts/new">
-                <i className="fas fa-plus-square" />
+                <i className="fas fa-plus-square fa-2x" />
             </NavLink>
         </nav>
     );

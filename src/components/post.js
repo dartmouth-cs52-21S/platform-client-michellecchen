@@ -185,11 +185,11 @@ class Post extends Component {
     displayButton = () => {
         if (this.state.editing) {
             return (
-                <i className="fas fa-check-square" role="button" aria-label="Save edits" tabIndex={0} onClick={this.pushChanges} />
+                <i className="fas fa-check-square fa-lg" role="button" aria-label="Save edits" tabIndex={0} onClick={this.pushChanges} />
             );
         } else {
             return (
-                <i className="fas fa-edit" role="button" aria-label="Make edits" tabIndex={0} onClick={this.openEditMode} />
+                <i className="fas fa-edit fa-lg" role="button" aria-label="Make edits" tabIndex={0} onClick={this.openEditMode} />
             );
         }
     }
@@ -199,17 +199,19 @@ class Post extends Component {
             <div>
                 <div id="post-topbar">
                     <NavLink to="/">
-                        <i className="fas fa-arrow-circle-left" />
+                        <i className="fas fa-arrow-circle-left fa-lg" />
                     </NavLink>
                     {this.displayButton()}
-                    <i role="button" aria-label="Delete post" tabIndex={0} className="fas fa-trash-alt" onClick={this.discardPost} />
+                    <i role="button" aria-label="Delete post" tabIndex={0} className="fas fa-trash-alt fa-lg" onClick={this.discardPost} />
                 </div>
 
-                <div id="post">
-                    {this.displayTitle()}
-                    {this.displayTags()}
-                    {this.displayCover()}
-                    {this.displayContent()}
+                <div id="post-container">
+                    <div id="post">
+                        {this.displayTitle()}
+                        {this.displayTags()}
+                        {this.displayCover()}
+                        {this.displayContent()}
+                    </div>
                 </div>
             </div>
         );

@@ -13,7 +13,7 @@ class Posts extends Component {
         if (this.props.posts !== undefined) {
             const posts = this.props.posts.map((post) => {
                 return (
-                    <NavLink className=".post-preview" to={`/posts/${post.id}`} key={post.id}>
+                    <NavLink className=".post-preview" key={post.id} to={`/posts/${post.id}`}>
                         <Preview key={post.id} post={post} />
                     </NavLink>
                 );
