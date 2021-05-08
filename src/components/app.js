@@ -6,7 +6,7 @@ import NavBar from './navbar';
 import NewPost from './newpost';
 import Fallback from './fallback';
 
-const App = (props) => {
+const App = () => {
     return (
         <Router>
             <div>

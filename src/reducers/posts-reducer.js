@@ -8,6 +8,7 @@ const initialState = {
 // Currently only need to respond to 2 ActionTypes: FETCH_POST and FETCH_POSTS
 // FETCH_POSTS: Return the state object with 'all' property set to the new posts
 // FETCH_POST: Return single post
+// **added UPDATE_POST
 const PostsReducer = (state = initialState, action) => {
     switch (action.type) {
         case ActionTypes.FETCH_POST:

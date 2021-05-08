@@ -40,31 +40,6 @@ class NewPost extends Component {
         });
     }
 
-    // Using regex to validate file format/extension (jpeg/jpg/gif/png) of cover photo
-    // via its URL. The extension trails at the end of the URL, so we can use 'match'.
-    // Empty URLs (no images) pass the check.
-    validateFileFormat = (url) => {
-        if (url === '') {
-            return true;
-        } else if (url !== undefined) {
-            return (url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-        } else {
-            return null;
-        }
-    }
-
-    handleInvalidUrl = () => {
-        if (this.state.invalidUrl) {
-            return (
-                <div>
-                    Invalid URL. Please find a URL to an image ending in the format .jpeg, .jpg, .png, or .gif.
-                </div>
-            );
-        } else {
-            return <div />;
-        }
-    }
-
     createPost = () => {
         const post = {
             title: this.state.title,
@@ -118,7 +93,7 @@ class NewPost extends Component {
                     </NavLink>
                 </div>
 
-                <div className="post-new">
+                <div id="post-new">
 
                     <h1>Create A New Post</h1>
 

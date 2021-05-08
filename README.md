@@ -2,7 +2,7 @@
 
 *description*
 
-[deployed url](http://url-if-deployed-here)
+[URL.](https://condescending-beaver-755764.netlify.app/)
 
 ## What Worked Well
 
@@ -21,5 +21,7 @@ To then trying out a variety of component libraries, such as [react-inline-editi
 In short, I decided, yeah, I'll just use the edit button, and style the `input`/`textarea` fields to most closely resemble the post's text fields as much as possible. :(
 
 ## Extra Credit
+
+...:).
 
 ## Screenshots
