@@ -29,7 +29,7 @@ class Post extends Component {
                 tags: this.state.tags,
                 coverUrl: this.state.coverUrl,
                 content: this.state.content,
-                id: this.props.thisPost.id,
+                id: this.props.thisPost._id,
             };
 
         this.props.updatePost(updatedPost, () => this.setState({ editing: false }));
@@ -164,7 +164,7 @@ class Post extends Component {
     // Essentially the same effect as back-arrowing - let the user return to the front page.
     discardPost = (e) => {
         e.preventDefault();
-        this.props.deletePost(this.props.thisPost.id, this.props.history);
+        this.props.deletePost(this.props.thisPost._id, this.props.history);
     }
 
     // Allow the user to edit text fields.

@@ -25,7 +25,7 @@ const Preview = (props) => {
     };
 
     return (
-        <div className="post-preview" onClick={() => props.fetchPost(props.post.id)} role="button" aria-label="Preview post" tabIndex={0}>
+        <div className="post-preview" onClick={() => props.fetchPost(props.post._id)} role="button" aria-label="Preview post" tabIndex={0}>
 
             <img src={props.post.coverUrl} alt={`${props.post.coverUrl}`} />
 
