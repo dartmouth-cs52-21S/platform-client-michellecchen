@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Label } from 'semantic-ui-react';
-// import marked from 'marked';
 
 import { fetchPost, updatePost, deletePost } from '../actions';
 
