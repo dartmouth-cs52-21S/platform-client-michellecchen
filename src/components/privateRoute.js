@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter, Route, Redirect } from 'react-router-dom';
+/* eslint-disable react/jsx-props-no-spreading */
 
 const PrivateRoute = ({ component: Child, ...props }) => {
     return (
@@ -9,7 +10,7 @@ const PrivateRoute = ({ component: Child, ...props }) => {
             render={(routeProps) => (props.authenticated ? (
                 <Child {...routeProps} />
             ) : (
-                <Redirect to="/signIn" />
+                <Redirect to="/signin" />
             ))}
         />
     );

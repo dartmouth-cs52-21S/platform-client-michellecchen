@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const ROOT_URL = 'https://blog-michellecchen.herokuapp.com/api';
+const ROOT_URL = 'http://localhost:9090/api';
 const API_KEY = '?key=michelle_chen';
 
 // keys for actiontypes
@@ -79,7 +79,7 @@ export function createPost(post, history) {
 
 export function updatePost(post, callback) {
     return (dispatch) => {
-        axios.put(`${ROOT_URL}/posts/${post.id}${API_KEY}`, post, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
+        axios.put(`${ROOT_URL}/posts/${post._id}${API_KEY}`, post, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
             dispatch({
                 type: ActionTypes.UPDATE_POST,
                 payload: response.data,
@@ -110,14 +110,14 @@ export function deletePost(id, history) {
 
 // SA7: Authorization
 
+export function authError(error) {
+    return {
+        type: ActionTypes.AUTH_ERROR,
+        message: error,
+    };
+}
+
 export function signinUser({ email, password }, history) {
-    // takes in an object with email and password (minimal user object)
-    // returns a thunk method that takes dispatch as an argument (just like our create post method really)
-    // does an axios.post on the /signin endpoint
-    // on success does:
-    //  dispatch({ type: ActionTypes.AUTH_USER });
-    //  localStorage.setItem('token', response.data.token);
-    // on error should dispatch(authError(`Sign In Failed: ${error.response.data}`));
     return (dispatch) => {
         axios.post(`${ROOT_URL}/signin/${API_KEY}`, { email, password })
             .then((response) => {
@@ -131,16 +131,7 @@ export function signinUser({ email, password }, history) {
     };
 }
 
-
-
 export function signupUser({ email, password, userName }, history) {
-    // takes in an object with email and password (minimal user object)
-    // returns a thunk method that takes dispatch as an argument (just like our create post method really)
-    // does an axios.post on the /signup endpoint (only difference from above)
-    // on success does:
-    //  dispatch({ type: ActionTypes.AUTH_USER });
-    //  localStorage.setItem('token', response.data.token);
-    // on error should dispatch(authError(`Sign Up Failed: ${error.response.data}`));
     return (dispatch) => {
         axios.post(`${ROOT_URL}/signup/${API_KEY}`, { email, password, userName })
             .then((response) => {
@@ -154,22 +145,10 @@ export function signupUser({ email, password, userName }, history) {
     };
 }
 
-
-// deletes token from localstorage
-// and deauths
 export function signoutUser(history) {
     return (dispatch) => {
         localStorage.removeItem('token');
         dispatch({ type: ActionTypes.DEAUTH_USER });
         history.push('/');
-    };
-}
-
-// trigger to deauth if there is error
-// can also use in your error reducer if you have one to display an error message
-export function authError(error) {
-    return {
-        type: ActionTypes.AUTH_ERROR,
-        message: error,
     };
 }

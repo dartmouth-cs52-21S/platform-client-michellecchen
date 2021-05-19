@@ -19,8 +19,8 @@ const App = (props) => {
                     <PrivateRoute path="/posts/new" component={NewPost} />
                     <Route path="/posts/:postID" component={Post} />
                     <Route component={Fallback} />
-                    <Route path="/signIn" component={SignIn} />
-                    <Route path="/signUp" component={SignUp} />
+                    <Route path="/signin" component={SignIn} />
+                    <Route path="/signup" component={SignUp} />
                 </Switch>
             </div>
         </Router>

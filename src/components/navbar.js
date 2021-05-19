@@ -27,8 +27,8 @@ const NavBar = (props) => {
                 <NavLink to="/posts/new">
                     <i className="fas fa-plus-square fa-2x" />
                 </NavLink>
-                <NavLink to="/signIn">Sign in</NavLink>
-                <NavLink to="/signUp">Sign up</NavLink>
+                <NavLink to="/signin">Sign in</NavLink>
+                <NavLink to="/signup">Sign up</NavLink>
             </nav>
         );
     }
