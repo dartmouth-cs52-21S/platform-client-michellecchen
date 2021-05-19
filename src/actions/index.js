@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //const ROOT_URL = 'http://localhost:9090/api';
 const ROOT_URL = 'https://blog-michellecchen.herokuapp.com/api';
-const API_KEY = '?key=michelle_chen';
+//const API_KEY = '?key=michelle_chen';
 
 // keys for actiontypes
 export const ActionTypes = {
@@ -27,7 +27,7 @@ export function fetchPost(id) {
     // These functions can then run async methods and can manually dispatch more actions
     // upon being returned!
     return (dispatch) => {
-        axios.get(`${ROOT_URL}/posts/${id}${API_KEY}`).then((response) => {
+        axios.get(`${ROOT_URL}/posts/${id}`).then((response) => {
             if (!('message' in response.data)) {
                 dispatch({
                     type: ActionTypes.FETCH_POST,
@@ -44,7 +44,7 @@ export function fetchPost(id) {
 
 export function fetchPosts() {
     return (dispatch) => {
-        axios.get(`${ROOT_URL}/posts${API_KEY}`).then((response) => {
+        axios.get(`${ROOT_URL}/posts`).then((response) => {
             // do something with response.data (some json)
             console.log('response:');
             console.log(response);
@@ -62,7 +62,7 @@ export function fetchPosts() {
 
 export function createPost(post, history) {
     return (dispatch) => {
-        axios.post(`${ROOT_URL}/posts/${API_KEY}`, post, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
+        axios.post(`${ROOT_URL}/posts`, post, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
             dispatch({
                 type: ActionTypes.CREATE_POST,
                 payload: response.data,
@@ -80,7 +80,7 @@ export function createPost(post, history) {
 
 export function updatePost(post, callback) {
     return (dispatch) => {
-        axios.put(`${ROOT_URL}/posts/${post._id}${API_KEY}`, post, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
+        axios.put(`${ROOT_URL}/posts/${post.id}`, post, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
             dispatch({
                 type: ActionTypes.UPDATE_POST,
                 payload: response.data,
@@ -96,7 +96,7 @@ export function updatePost(post, callback) {
 // history.push('/') for navigation
 export function deletePost(id, history) {
     return (dispatch) => {
-        axios.delete(`${ROOT_URL}/posts/${id}${API_KEY}`, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
+        axios.delete(`${ROOT_URL}/posts/${id}`, { headers: { authorization: localStorage.getItem('token') } }).then((response) => {
             dispatch({
                 type: ActionTypes.DELETE_POST,
                 payload: response.data,
@@ -120,10 +120,10 @@ export function authError(error) {
 
 export function signinUser({ email, password }, history) {
     return (dispatch) => {
-        axios.post(`${ROOT_URL}/signin/${API_KEY}`, { email, password })
+        axios.post(`${ROOT_URL}/signin`, { email, password })
             .then((response) => {
-                dispatch({ type: ActionTypes.AUTH_USER });
                 localStorage.setItem('token', response.data.token);
+                dispatch({ type: ActionTypes.AUTH_USER });
                 history.push('/');
             })
             .catch((error) => {
@@ -134,10 +134,10 @@ export function signinUser({ email, password }, history) {
 
 export function signupUser({ email, password, userName }, history) {
     return (dispatch) => {
-        axios.post(`${ROOT_URL}/signup/${API_KEY}`, { email, password, userName })
+        axios.post(`${ROOT_URL}/signup`, { email, password, userName })
             .then((response) => {
-                dispatch({ type: ActionTypes.AUTH_USER });
                 localStorage.setItem('token', response.data.token);
+                dispatch({ type: ActionTypes.AUTH_USER });
                 history.push('/');
             })
             .catch((error) => {

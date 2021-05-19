@@ -210,6 +210,7 @@ class Post extends Component {
                         {this.displayTags()}
                         {this.displayCover()}
                         {this.displayContent()}
+                        {/* {this.props.thisPost.author.userName} */}
                     </div>
                 </div>
             </div>
